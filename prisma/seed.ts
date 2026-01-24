@@ -40,7 +40,7 @@ async function main() {
       name: "Humaam",
       tagline: "Full-Stack Developer & Systems Architect",
       email: "hello@humaam.dev",
-      phone: "+960 7777777",
+      phone: "+960 7211404",
       location: "Maldives",
       bio: "I build powerful digital solutions that drive business growth. From enterprise systems to mobile apps, I deliver clean, scalable code that solves real problems.",
       aboutContent: `With 4+ years of experience in full-stack development, I specialize in building enterprise-grade applications that transform how businesses operate.
@@ -62,11 +62,11 @@ I believe in writing code that's not just functional, but maintainable and scala
 - User experience drives technical decisions
 - Communication and transparency throughout
 - Continuous learning and improvement`,
-      github: "https://github.com/humaam",
-      linkedin: "https://linkedin.com/in/humaam",
-      twitter: "https://twitter.com/humaam",
-      whatsapp: "https://wa.me/9607777777",
-      telegram: "https://t.me/humaam",
+      github: "https://github.com/mohamed-humaam",
+      linkedin: "https://linkedin.com/in/humaam-codes",
+      twitter: "https://x.com/HumaamAthif",
+      whatsapp: "https://wa.me/9607211404",
+      telegram: "https://t.me/hummato",
       calendly: "https://calendly.com/humaam/30min",
       seoTitle: "Humaam | Full-Stack Developer & Systems Architect",
       seoDesc: "Expert full-stack developer specializing in ERPs, business systems, mobile apps, and automation. 4+ years of experience building scalable solutions.",
