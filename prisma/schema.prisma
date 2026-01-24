@@ -1,0 +1,145 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  name      String?
+  role      String   @default("admin")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Project {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+  summary     String
+  description String   @db.Text
+  stack       String[] // Array of tech stack items
+  images      String[] // Array of image URLs
+  liveUrl     String?
+  repoUrl     String?
+  featured    Boolean  @default(false)
+  sortOrder   Int      @default(0)
+  status      String   @default("published") // draft, published
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Post {
+  id          String    @id @default(cuid())
+  title       String
+  slug        String    @unique
+  excerpt     String
+  content     String    @db.Text // MDX content
+  coverImage  String?
+  tags        String[]
+  readingTime Int       @default(5)
+  status      String    @default("draft") // draft, published
+  publishedAt DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Service {
+  id           String   @id @default(cuid())
+  title        String
+  slug         String   @unique
+  shortDesc    String
+  longDesc     String   @db.Text
+  icon         String?  // Lucide icon name
+  deliverables String[] // Array of deliverable items
+  pricingNote  String?
+  featured     Boolean  @default(false)
+  sortOrder    Int      @default(0)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Skill {
+  id        String   @id @default(cuid())
+  name      String
+  category  String   // Frontend, Backend, Mobile, DevOps, Tools
+  level     Int      @default(80) // 0-100 proficiency
+  icon      String?  // Optional icon name or URL
+  sortOrder Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([name, category])
+}
+
+model Testimonial {
+  id        String   @id @default(cuid())
+  name      String
+  role      String
+  company   String?
+  content   String   @db.Text
+  avatar    String?
+  featured  Boolean  @default(false)
+  sortOrder Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model SiteSettings {
+  id            String   @id @default("main")
+  name          String   @default("Humaam")
+  tagline       String   @default("Full-Stack Developer")
+  email         String   @default("hello@humaam.dev")
+  phone         String?
+  location      String?
+  bio           String?  @db.Text
+  aboutContent  String?  @db.Text
+  
+  // Social links
+  github        String?
+  linkedin      String?
+  twitter       String?
+  instagram     String?
+  whatsapp      String?
+  telegram      String?
+  calendly      String?  // For "Book a call" CTA
+  
+  // SEO defaults
+  seoTitle      String?
+  seoDesc       String?
+  ogImage       String?
+  
+  // Stats (shown on homepage)
+  yearsExp      Int      @default(4)
+  projectsCount Int      @default(50)
+  clientsCount  Int      @default(30)
+  
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model Contact {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  subject   String?
+  message   String   @db.Text
+  status    String   @default("new") // new, read, replied, archived
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Media {
+  id        String   @id @default(cuid())
+  filename  String
+  url       String
+  type      String   // image, document, etc.
+  size      Int
+  alt       String?
+  createdAt DateTime @default(now())
+}
