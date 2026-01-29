@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import "./globals.css";
 import { GoogleAnalytics } from "@/components/analytics";
 
@@ -75,6 +76,7 @@ export default function RootLayout({
             {children}
             <Toaster />
             <Analytics />
+            <SpeedInsights />
         </ThemeProvider>
         </body>
         </html>
