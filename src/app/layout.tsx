@@ -1,8 +1,9 @@
-import type {Metadata} from "next";
-import {ThemeProvider} from "@/components/providers/theme-provider";
-import {Toaster} from "@/components/ui/toaster";
+import type { Metadata } from "next";
+import { ThemeProvider } from "@/components/providers/theme-provider";
+import { Toaster } from "@/components/ui/toaster";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
-import {GoogleAnalytics} from "@/components/analytics";
+import { GoogleAnalytics } from "@/components/analytics";
 
 export const metadata: Metadata = {
     title: {
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
         "React Native",
         "software engineer",
     ],
-    authors: [{name: "Humaam"}],
+    authors: [{ name: "Humaam" }],
     creator: "Humaam",
     openGraph: {
         type: "website",
@@ -64,6 +65,7 @@ export default function RootLayout({
                 measurementId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}
             />
         )}
+
         <ThemeProvider
             attribute="class"
             defaultTheme="dark"
@@ -71,7 +73,8 @@ export default function RootLayout({
             disableTransitionOnChange
         >
             {children}
-            <Toaster/>
+            <Toaster />
+            <Analytics />
         </ThemeProvider>
         </body>
         </html>
