@@ -71,6 +71,18 @@ const config: Config = {
           "0%, 100%": { opacity: "1" },
           "50%": { opacity: "0.5" },
         },
+        marquee: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
+        "scroll-cue": {
+          "0%": { transform: "translateY(-100%)" },
+          "100%": { transform: "translateY(200%)" },
+        },
+        caret: {
+          "0%, 49%": { opacity: "1" },
+          "50%, 100%": { opacity: "0" },
+        },
       },
       animation: {
         "fade-in": "fade-in 0.5s ease-out forwards",
@@ -78,6 +90,9 @@ const config: Config = {
         shimmer: "shimmer 2s linear infinite",
         float: "float 3s ease-in-out infinite",
         glow: "glow 2s ease-in-out infinite",
+        marquee: "marquee var(--marquee-duration, 40s) linear infinite",
+        "scroll-cue": "scroll-cue 1.8s cubic-bezier(0.65, 0, 0.35, 1) infinite",
+        caret: "caret 1s step-end infinite",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

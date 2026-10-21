@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { EASE_OUT_EXPO } from "@/components/ui/reveal";
 import { ArrowRight, ExternalLink, Github } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -18,9 +19,10 @@ export function FeaturedProjects({ projects }: FeaturedProjectsProps) {
     <section className="py-20 md:py-32">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "0px 0px -12% 0px" }}
+          transition={{ duration: 0.9, ease: EASE_OUT_EXPO }}
           className="text-center mb-12"
         >
           <h2 className="text-3xl sm:text-4xl font-display font-bold mb-4">
@@ -35,10 +37,10 @@ export function FeaturedProjects({ projects }: FeaturedProjectsProps) {
           {projects.map((project, index) => (
             <motion.div
               key={project.id}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
+              viewport={{ once: true, margin: "0px 0px -12% 0px" }}
+              transition={{ delay: index * 0.1, duration: 0.9, ease: EASE_OUT_EXPO }}
             >
               <Card className="group h-full overflow-hidden hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-1">
                 {/* Image */}
@@ -122,9 +124,10 @@ export function FeaturedProjects({ projects }: FeaturedProjectsProps) {
         </div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "0px 0px -12% 0px" }}
+          transition={{ duration: 0.9, ease: EASE_OUT_EXPO }}
           className="text-center mt-12"
         >
           <Button asChild variant="outline" size="lg">

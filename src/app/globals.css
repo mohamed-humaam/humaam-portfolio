@@ -79,6 +79,24 @@
   .glass {
     @apply bg-background/80 backdrop-blur-lg border border-border/50;
   }
+
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Fades a horizontally scrolling row out at both edges. */
+  .fade-x {
+    mask-image: linear-gradient(to right, transparent, #000 24px, #000 calc(100% - 24px), transparent);
+  }
+
+  .dot-grid {
+    background-image: radial-gradient(hsl(var(--foreground) / 0.12) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
   
   .noise {
     position: relative;

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { EASE_OUT_EXPO } from "@/components/ui/reveal";
 import { ArrowRight, Building2, Calendar, Globe, Smartphone, Plug, Bot, RefreshCw, Cloud, Calculator } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -31,9 +32,10 @@ export function ServicesSection({ services }: ServicesSectionProps) {
     <section className="py-20 md:py-32 bg-muted/30">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "0px 0px -12% 0px" }}
+          transition={{ duration: 0.9, ease: EASE_OUT_EXPO }}
           className="text-center mb-12"
         >
           <h2 className="text-3xl sm:text-4xl font-display font-bold mb-4">
@@ -51,10 +53,10 @@ export function ServicesSection({ services }: ServicesSectionProps) {
             return (
               <motion.div
                 key={service.id}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
+                viewport={{ once: true, margin: "0px 0px -12% 0px" }}
+                transition={{ delay: index * 0.1, duration: 0.9, ease: EASE_OUT_EXPO }}
               >
                 <Link href={`/services/${service.slug}`}>
                   <Card className="h-full group hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-1 cursor-pointer">
@@ -83,9 +85,10 @@ export function ServicesSection({ services }: ServicesSectionProps) {
         </div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "0px 0px -12% 0px" }}
+          transition={{ duration: 0.9, ease: EASE_OUT_EXPO }}
           className="text-center mt-12"
         >
           <Button asChild variant="outline" size="lg">

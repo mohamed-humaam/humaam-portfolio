@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { TagFilter } from "@/components/ui/tag-filter";
 import type { Project } from "@prisma/client";
 
 interface ProjectsGridProps {
@@ -59,25 +60,7 @@ export function ProjectsGrid({ projects, allTags }: ProjectsGridProps) {
         </div>
 
         {/* Tags */}
-        <div className="flex flex-wrap gap-2">
-          <Button
-            variant={selectedTag === null ? "default" : "outline"}
-            size="sm"
-            onClick={() => setSelectedTag(null)}
-          >
-            All
-          </Button>
-          {allTags.slice(0, 10).map((tag) => (
-            <Button
-              key={tag}
-              variant={selectedTag === tag ? "default" : "outline"}
-              size="sm"
-              onClick={() => setSelectedTag(selectedTag === tag ? null : tag)}
-            >
-              {tag}
-            </Button>
-          ))}
-        </div>
+        <TagFilter tags={allTags} selected={selectedTag} onSelect={setSelectedTag} />
       </div>
 
       {/* Results count */}

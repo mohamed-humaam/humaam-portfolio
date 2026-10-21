@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { EASE_OUT_EXPO } from "@/components/ui/reveal";
 import { ArrowRight, Mail, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -21,9 +22,10 @@ export function CTASection({ calendlyUrl }: CTASectionProps) {
 
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "0px 0px -12% 0px" }}
+          transition={{ duration: 0.9, ease: EASE_OUT_EXPO }}
         >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold mb-6">
             Ready to Build Something{" "}

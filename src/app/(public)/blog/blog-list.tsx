@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { TagFilter } from "@/components/ui/tag-filter";
 import { formatDateShort } from "@/lib/utils";
 import type { Post } from "@prisma/client";
 
@@ -55,27 +56,7 @@ export function BlogList({ posts, allTags }: BlogListProps) {
           )}
         </div>
 
-        {allTags.length > 0 && (
-          <div className="flex flex-wrap gap-2">
-            <Button
-              variant={selectedTag === null ? "default" : "outline"}
-              size="sm"
-              onClick={() => setSelectedTag(null)}
-            >
-              All
-            </Button>
-            {allTags.map((tag) => (
-              <Button
-                key={tag}
-                variant={selectedTag === tag ? "default" : "outline"}
-                size="sm"
-                onClick={() => setSelectedTag(selectedTag === tag ? null : tag)}
-              >
-                {tag}
-              </Button>
-            ))}
-          </div>
-        )}
+        <TagFilter tags={allTags} selected={selectedTag} onSelect={setSelectedTag} />
       </div>
 
       <p className="text-sm text-muted-foreground mb-6">
