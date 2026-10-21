@@ -35,7 +35,12 @@ export async function createPost(data: PostInput) {
       slug: finalSlug,
       readingTime: calculateReadingTime(rest.content),
       coverImage: rest.coverImage || null,
-      publishedAt: rest.status === "published" ? new Date() : null,
+      publishedAt:
+        rest.status === "published"
+          ? publishedAt
+            ? new Date(publishedAt)
+            : new Date()
+          : null,
     },
   });
 
@@ -68,8 +73,9 @@ export async function updatePost(id: string, data: PostInput) {
       slug,
       readingTime: calculateReadingTime(rest.content),
       coverImage: rest.coverImage || null,
-      publishedAt:
-        rest.status === "published" && !currentPost?.publishedAt
+      publishedAt: publishedAt
+        ? new Date(publishedAt)
+        : rest.status === "published" && !currentPost?.publishedAt
           ? new Date()
           : currentPost?.publishedAt,
     },
