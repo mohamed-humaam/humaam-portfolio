@@ -41,6 +41,7 @@ export async function createProject(data: ProjectInput) {
 
   revalidatePath("/admin/projects");
   revalidatePath("/projects");
+  revalidatePath("/");
   return { success: true, data: project };
 }
 
@@ -72,6 +73,7 @@ export async function updateProject(id: string, data: ProjectInput) {
 
   revalidatePath("/admin/projects");
   revalidatePath("/projects");
+  revalidatePath("/");
   revalidatePath(`/projects/${slug}`);
   return { success: true, data: project };
 }
@@ -80,5 +82,6 @@ export async function deleteProject(id: string) {
   await db.project.delete({ where: { id } });
   revalidatePath("/admin/projects");
   revalidatePath("/projects");
+  revalidatePath("/");
   return { success: true };
 }

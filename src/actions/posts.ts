@@ -41,6 +41,7 @@ export async function createPost(data: PostInput) {
 
   revalidatePath("/admin/posts");
   revalidatePath("/blog");
+  revalidatePath("/");
   return { success: true, data: post };
 }
 
@@ -76,6 +77,7 @@ export async function updatePost(id: string, data: PostInput) {
 
   revalidatePath("/admin/posts");
   revalidatePath("/blog");
+  revalidatePath("/");
   revalidatePath(`/blog/${slug}`);
   return { success: true, data: post };
 }
@@ -84,5 +86,6 @@ export async function deletePost(id: string) {
   await db.post.delete({ where: { id } });
   revalidatePath("/admin/posts");
   revalidatePath("/blog");
+  revalidatePath("/");
   return { success: true };
 }
