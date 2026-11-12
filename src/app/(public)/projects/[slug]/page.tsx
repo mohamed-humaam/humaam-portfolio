@@ -211,7 +211,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                   <p className="text-sm text-muted-foreground mb-4">
                     {project.companyRelation === "client"
                       ? `I built this for ${project.company}.`
-                      : `${project.title.split(" — ")[0]} is a product of ${project.company}, where I work as a developer.`}
+                      : `${project.title.split(" — ")[0]} is a product of ${project.company}.`}
                   </p>
                   {project.companyUrl && (
                     <Button asChild variant="outline" className="w-full">
