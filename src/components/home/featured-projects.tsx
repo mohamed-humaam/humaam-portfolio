@@ -8,6 +8,7 @@ import { ArrowRight, ExternalLink, Github } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
+import { ProjectCredit } from "@/components/projects/project-credit";
 import type { Project } from "@prisma/client";
 
 interface FeaturedProjectsProps {
@@ -69,6 +70,7 @@ export function FeaturedProjects({ projects }: FeaturedProjectsProps) {
                       {project.title}
                     </Link>
                   </h3>
+                  <ProjectCredit project={project} className="mb-3 -mt-1" />
                   <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
                     {project.summary}
                   </p>

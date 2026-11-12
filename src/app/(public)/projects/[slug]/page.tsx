@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { formatDate } from "@/lib/utils";
+import { ProjectCredit } from "@/components/projects/project-credit";
 
 interface ProjectPageProps {
   params: Promise<{ slug: string }>;
@@ -37,9 +38,13 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
 
   if (!project) return { title: "Project Not Found" };
 
+  const credit = project.company
+    ? ` ${project.companyRelation === "client" ? "Built for" : "A product of"} ${project.company}.`
+    : "";
+
   return {
     title: project.title,
-    description: project.summary,
+    description: project.summary + credit,
     openGraph: {
       title: project.title,
       description: project.summary,
@@ -94,6 +99,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold mb-4">
             {project.title}
           </h1>
+
+          <ProjectCredit project={project} className="mb-4 text-base" />
 
           <p className="text-xl text-muted-foreground max-w-3xl mb-6">
             {project.summary}
@@ -194,6 +201,30 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
           {/* Sidebar */}
           <div className="space-y-6">
+            {/* Company credit */}
+            {project.company && (
+              <Card>
+                <CardContent className="pt-6">
+                  <h3 className="font-semibold mb-2">
+                    {project.companyRelation === "client" ? "Client" : "Company"}
+                  </h3>
+                  <p className="text-sm text-muted-foreground mb-4">
+                    {project.companyRelation === "client"
+                      ? `I built this for ${project.company}.`
+                      : `${project.title.split(" — ")[0]} is a product of ${project.company}, where I work as a developer.`}
+                  </p>
+                  {project.companyUrl && (
+                    <Button asChild variant="outline" className="w-full">
+                      <a href={project.companyUrl} target="_blank" rel="noopener">
+                        <ExternalLink className="mr-2 h-4 w-4" />
+                        Visit {project.company}
+                      </a>
+                    </Button>
+                  )}
+                </CardContent>
+              </Card>
+            )}
+
             {/* Tech Stack */}
             <Card>
               <CardContent className="pt-6">

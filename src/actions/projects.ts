@@ -36,6 +36,9 @@ export async function createProject(data: ProjectInput) {
       slug: finalSlug,
       liveUrl: rest.liveUrl || null,
       repoUrl: rest.repoUrl || null,
+      company: rest.company || null,
+      companyUrl: rest.companyUrl || null,
+      companyRelation: rest.company ? rest.companyRelation : null,
     },
   });
 
@@ -68,6 +71,9 @@ export async function updateProject(id: string, data: ProjectInput) {
       slug,
       liveUrl: rest.liveUrl || null,
       repoUrl: rest.repoUrl || null,
+      company: rest.company || null,
+      companyUrl: rest.companyUrl || null,
+      companyRelation: rest.company ? rest.companyRelation : null,
     },
   });
 

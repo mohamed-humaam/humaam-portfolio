@@ -27,6 +27,10 @@ model Project {
   images      String[] // Array of image URLs
   liveUrl     String?
   repoUrl     String?
+  // Credit to the company the project belongs to or was built for
+  company         String?
+  companyUrl      String?
+  companyRelation String? // "product" (made at that company) | "client" (built for them)
   featured    Boolean  @default(false)
   sortOrder   Int      @default(0)
   status      String   @default("published") // draft, published

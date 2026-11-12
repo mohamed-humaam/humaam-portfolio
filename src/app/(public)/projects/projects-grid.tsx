@@ -10,6 +10,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { TagFilter } from "@/components/ui/tag-filter";
+import { ProjectCredit } from "@/components/projects/project-credit";
 import type { Project } from "@prisma/client";
 
 interface ProjectsGridProps {
@@ -113,6 +114,7 @@ export function ProjectsGrid({ projects, allTags }: ProjectsGridProps) {
                       {project.title}
                     </Link>
                   </h3>
+                  <ProjectCredit project={project} className="mb-3 -mt-1" />
                   <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
                     {project.summary}
                   </p>

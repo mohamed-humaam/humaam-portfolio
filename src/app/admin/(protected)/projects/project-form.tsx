@@ -53,6 +53,9 @@ export function ProjectForm({ project }: ProjectFormProps) {
       images: project?.images || [],
       liveUrl: project?.liveUrl || "",
       repoUrl: project?.repoUrl || "",
+      company: project?.company || "",
+      companyUrl: project?.companyUrl || "",
+      companyRelation: (project?.companyRelation as "product" | "client") || "product",
       featured: project?.featured || false,
       sortOrder: project?.sortOrder || 0,
       status: (project?.status as "draft" | "published") || "published",
@@ -257,6 +260,51 @@ export function ProjectForm({ project }: ProjectFormProps) {
                   placeholder="https://github.com/username/repo"
                   {...register("repoUrl")}
                 />
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle>Company Credit</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <p className="text-sm text-muted-foreground">
+                Shown on the project card and page with a link to the company&apos;s site.
+                Leave the name empty for personal projects.
+              </p>
+              <div className="space-y-2">
+                <Label htmlFor="company">Company</Label>
+                <Input id="company" placeholder="Backslash Lab" {...register("company")} />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="companyUrl">Company URL</Label>
+                <Input
+                  id="companyUrl"
+                  type="url"
+                  placeholder="https://backslashlab.co"
+                  {...register("companyUrl")}
+                />
+                {errors.companyUrl && (
+                  <p className="text-sm text-destructive">{errors.companyUrl.message}</p>
+                )}
+              </div>
+              <div className="space-y-2">
+                <Label>Relationship</Label>
+                <Select
+                  defaultValue={project?.companyRelation || "product"}
+                  onValueChange={(value) =>
+                    setValue("companyRelation", value as "product" | "client")
+                  }
+                >
+                  <SelectTrigger>
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="product">A product of (made at the company)</SelectItem>
+                    <SelectItem value="client">Built for (client project)</SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
             </CardContent>
           </Card>
